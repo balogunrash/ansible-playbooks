@@ -1,0 +1,10 @@
+---
+- name: My First Playbook
+  hosts: localhost
+  become: true
+  become_method: sudo
+  task:
+  - name: install package
+    package:
+      name: httpd
+      state: installed
