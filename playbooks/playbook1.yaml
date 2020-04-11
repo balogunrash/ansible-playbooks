@@ -9,8 +9,14 @@
       name: httpd
       state: installed
 
-
   - name: install telnet
-    package:
-      name: httpd
-      state: removed
+    user:
+      name: telnel
+      state: installed
+
+
+
+  - name: add bob
+    user:
+      name: bob
+      state: present
