@@ -11,8 +11,8 @@
 
   - name: install telnet
     user:
-      name: telnel
-      state: installed
+      name: telnet
+      state: present
 
 
 
