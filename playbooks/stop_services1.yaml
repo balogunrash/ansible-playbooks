@@ -5,7 +5,7 @@
   become_method: sudo
   user: centos
   ignore_errors: true          #Dont stop if there are errors
-  tasks:
+  tasks: 
   - name: Stop r1soft on CentOS 7
     when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "7")
     systemd: 
