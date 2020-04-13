@@ -69,13 +69,12 @@
 
       unarchive:
 
-        src: /tmp/wordpress-4.9.8.tar.gz
+        src: /tmp/wordpress-5.4.tar.gz
 
         dest: /var/www/html/
 
         remote_src: yes
-
-
+      ignore_errors: true
 
     # - name: Start webserver
 
