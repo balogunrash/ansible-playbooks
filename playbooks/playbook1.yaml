@@ -14,10 +14,3 @@
     user:
       name: telnet
       state: present
-
-
-
-  - name: add users
-    user:
-      name: bob love sam lee roy
-      state: present
