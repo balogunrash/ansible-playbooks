@@ -3,6 +3,9 @@
 - name: Install wordpress
 
   hosts: 54.87.71.147
+  become: true
+  become_method: sudo
+  user: centos
 
   tasks:
 
