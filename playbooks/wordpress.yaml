@@ -2,7 +2,7 @@
 
 - name: Install wordpress
 
-  hosts: all
+  hosts: 54.87.71.147
 
   tasks:
 
