@@ -16,7 +16,7 @@
       name: mariadb
       state: latest
 
-  - name: install php
+  - name: install php72
     package:
       name: php
       state: latest
@@ -42,6 +42,10 @@
       name: httpd
       state: restarted
       enabled: true
+  - name: SElinux
+    selinux:
+      policy: targeted
+      state: permisive
 
   - route53:
        
@@ -51,3 +55,4 @@
       type: A
       ttl: 7200
       value: 1.1.1.1,
+    ignore_eeror: true
