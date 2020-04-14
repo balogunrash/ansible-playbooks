@@ -16,14 +16,19 @@
       name: mariadb
       state: latest
 
+  # - name: install epel repo
+  #   package:
+  #     name: epel-release
+  #     state: latest
+
+  # - name: install remi repo
+  #   package:
+  #     name: remi-release
+  #     state: latest
+
   - name: install php
     package:
-      name: php
-      state: removed
-
-  - name: install php72
-    package:
-      name: php72
+      name: php7.2
       state: latest
 
   - name: install php-mysql
