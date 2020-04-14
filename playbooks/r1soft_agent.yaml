@@ -4,16 +4,18 @@
   become: true
   become_method: sudo
   user: centos
-  when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
+ 
   tasks: 
 
   - name: Create Repo
+    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
     copy:
       src: r1soft.repo
       dest: /etc/yum.repos.d/
 
 
   - name: Install Agent
+    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
     package:
       name: serverbackup-enterprise-agent
       state: latest 
@@ -22,6 +24,7 @@
 
 
   - name: Stop Iptables
+    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
     service:
       name: iptables
       state: stopped
@@ -29,6 +32,7 @@
 
 
   - name: Get Key
+    when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
     shell: "r1soft-setup --get-key http://backup.gbeksbaby.com/"
 
 
