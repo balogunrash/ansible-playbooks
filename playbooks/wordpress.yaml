@@ -35,12 +35,13 @@
     get_url: 
       url: https://wordpress.org/latest.tar.gz
       dest: /tmp/
+    
 
   - name: Unzip wordpress
     unarchive: 
       src: /tmp/wordpress-5.4.tar.gz
       dest: /var/www/html/
-      remote_src: yes
+      mode: 0755
 
   - name: Start webserver
     service: 
