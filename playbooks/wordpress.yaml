@@ -1,12 +1,12 @@
 ---
-- name: Install wordpress
+- name: Install WebServer
   hosts: all
   become: true
   become_method: sudo
   user: centos
 
   tasks: 
-  - name: install webserver  centos
+  - name: install apache
     package: 
       name: httpd
       state: latest
@@ -16,9 +16,14 @@
       name: mariadb
       state: latest
 
-  - name: install php72
+  - name: install php
     package:
       name: php
+      state: removed
+
+  - name: install php72
+    package:
+      name: php72
       state: latest
 
   - name: install php-mysql
