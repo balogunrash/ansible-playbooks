@@ -7,7 +7,6 @@
 
   tasks: 
   - name: install webserver  centos
-    when: ansible_os_family == "Centos"
     package: 
       name: httpd
       state: latest
@@ -15,12 +14,11 @@
 
   - name: Install all packages
     package: 
-      name: "{{ item }}"
-      with_items: 
-        - mysql
-        - mariadb-server
-        - php
-        - php-mysql
+      name: mysql
+      nane: mariadb-server
+      name: php
+      name: php-mysql
+      state: latest
 
   - name: Download wordpress
     get_url: 
