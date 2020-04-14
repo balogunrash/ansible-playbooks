@@ -36,7 +36,6 @@
     shell: "r1soft-setup --get-key http://backup.gbeksbaby.com/"
 
 
-
   handlers: 
     name: AGENT_RESTART
     service: 
