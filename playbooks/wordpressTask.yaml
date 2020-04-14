@@ -10,7 +10,6 @@
     package: 
       name: httpd
       state: latest
-      enabled: true
 
   - name: Install all packages
     package: 
