@@ -45,5 +45,5 @@
   - name: SElinux
     selinux:
       policy: targeted
-      state: permisive
+      state: disabled
 
