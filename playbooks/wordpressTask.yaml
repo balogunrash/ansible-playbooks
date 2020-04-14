@@ -11,11 +11,18 @@
       name: httpd
       state: latest
 
-  - name: Install all packages
+  - name: Install mariadb-server
     package: 
-      name: mysql
-      nane: mariadb-server
+      name: mariadb
+      state: latest
+
+  - name: install php
+    package:
       name: php
+      state: latest
+
+  - name: install php-mysql
+    package:
       name: php-mysql
       state: latest
 
