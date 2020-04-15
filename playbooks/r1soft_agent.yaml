@@ -4,7 +4,6 @@
   become: true
   become_method: sudo
   user: centos
-  
   tasks: 
 
   - name: Create Repo
@@ -13,15 +12,12 @@
       src: r1soft.repo
       dest: /etc/yum.repos.d/
 
-
   - name: Install Agent
     when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
     package:
       name: serverbackup-enterprise-agent
       state: latest 
    notify: AGENT_RESTART
-
-
 
   - name: Stop Iptables
     when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
@@ -30,11 +26,9 @@
       state: stopped
       enabled: false
 
-
   - name: Get Key
     when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
     shell: "r1soft-setup --get-key http://backup.gbeksbaby.com/"
-
 
   handlers: 
     name: AGENT_RESTART

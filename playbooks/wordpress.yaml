@@ -16,26 +16,24 @@
       name: mariadb
       state: latest
 
-  # - name: install epel repo
-  #   package:
-  #     name: epel-release
-  #     state: latest
+  - name: install epel-release
+    shell: "yum install epel-release -y"
 
-  # - name: install remi repo
-  #   package:
-  #     name: remi-release
-  #     state: latest
+  - name: install remi-release
+    shell: "yum install http://rpms.remirepo.net/enterprise/remi-release-7.rpm -y"
+
+  - name: Enable php7.2
+    shell: "yum-config-manager --enable remi-php72 -y"
 
   - name: install php
-    package:
-      name: php7.2
-      state: latest
+    shell: "yum install php php-mysql -y"
 
-  - name: install php-mysql
-    package:
-      name: php-mysql
-      state: latest
-
+  - name: Stop Iptables
+    service:
+      name: iptables
+      state: stopped
+      enabled: false   
+ 
   - name: Download wordpress
     get_url: 
       url: https://wordpress.org/latest.tar.gz
@@ -46,7 +44,13 @@
     unarchive: 
       src: /tmp/wordpress-5.4.tar.gz
       dest: /var/www/html/
-      mode: 0755
+      mode: 0600
+      owner: apache
+      group: apache
+      remote_src: yes
+
+  - name: Move index.html 
+    shell: "mv /var/www/html/index.html /tmp/"
 
   - name: Start webserver
     service: 
