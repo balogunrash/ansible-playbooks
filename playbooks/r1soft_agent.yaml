@@ -17,7 +17,7 @@
     package:
       name: serverbackup-enterprise-agent
       state: latest 
-   notify: AGENT_RESTART
+    notify: AGENT_RESTART
 
   - name: Stop Iptables
     when: (ansible_distribution == "CentOS" and ansible_distribution_major_version == "6")
