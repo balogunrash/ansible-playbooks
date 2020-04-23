@@ -1,0 +1,31 @@
+---
+- name: Prom Agent Installation
+  hosts: all
+  become: true
+  become_method: sudo
+  user: centos
+  tasks: 
+
+  - name: Download Node Exporter
+    shell: wget https://github.com/prometheus/node_exporter/releases/download/v0.18.1/node_exporter-0.18.1.linux-amd64.tar.gz
+
+  - name: Extract the Node Exporter
+    shell: tar xvfz node_exporter-0.18.1.linux-amd64.tar.gz
+
+  - name: Extract the Node Exporter
+    shell: mkdir /etc/prometheus
+  
+  - name: Move and Rename Node Exporter
+    shell: mv node_exporter-0.18.1.linux-amd64 /etc/prometheus/node_exporter
+
+  - name: Create Service File
+    copy:
+      src: node_exporter.service
+      dest: /etc/systemd/system/
+
+  handlers: 
+    name: AGENT_RESTART
+    service: 
+      name: node_exporter
+      state: restarted
+      enabled: true
