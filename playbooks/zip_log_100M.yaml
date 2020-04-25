@@ -1,6 +1,6 @@
 ---
 - name: Zip Log over 100M
-  hosts: all
+  hosts: localhost
   become: true
   become_method: sudo
   user: centos
