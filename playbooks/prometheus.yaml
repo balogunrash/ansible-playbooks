@@ -1,9 +1,9 @@
 ---
 - name: Prom Agent Installation
-  hosts: all
+  hosts: localhost
   become: true
   become_method: sudo
-  user: centos
+  user: ec2-user
   tasks: 
 
   - name: Download Node Exporter
@@ -12,9 +12,19 @@
   - name: Extract the Node Exporter
     shell: tar xvfz node_exporter-0.18.1.linux-amd64.tar.gz
 
-  - name: Extract the Node Exporter
-    shell: mkdir /etc/prometheus
-  
+# - name: Unarchive a file that needs to be downloaded (added in 2.0)
+#   unarchive:
+#     src: https://example.com/example.zip
+#     dest: /usr/local/bin
+#     remote_src: yes
+
+  - name: Create prometheus directory
+    file: 
+      path: /etc/prometheus
+      state: directory
+      owner: prometheus
+      group: prometheus
+   
   - name: Move and Rename Node Exporter
     shell: mv node_exporter-0.18.1.linux-amd64 /etc/prometheus/node_exporter
 
